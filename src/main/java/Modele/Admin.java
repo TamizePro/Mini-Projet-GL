@@ -1,25 +1,25 @@
 package Modele;
 
 public class Admin {
+    private static  Admin instance;
     private Compte compte;
-    private String nom;
-    private String prenom;
-    public Compte getCompte(){
-        return compte;
-    }
-    public String getNom(){
-        return  nom;
-    }
-    public String getPrenom(){
-        return  prenom;
-    }
-    public void setCompte(Compte compte){
+
+    private Admin(Compte compte) {
         this.compte = compte;
     }
-    public void setNom(String nom){
-        this.nom = nom;
+    public static Admin getInstance() {
+        if (instance == null) {
+            instance = new Admin(new Compte("Admin","password"));
+        }
+
+        return instance;
     }
-    public void setPrenom(String prenom){
-        this.prenom = prenom;
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
     }
 }
