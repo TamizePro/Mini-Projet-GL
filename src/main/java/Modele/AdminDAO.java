@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class AdminDAO implements IAdminDAO {
     private Connection connection;
-    public static Admin admin;
+    public static Admin admin = null;
 
     public AdminDAO(Connection connection){
         this.connection = connection;

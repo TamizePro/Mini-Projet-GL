@@ -30,7 +30,7 @@ create table `Professeur`
     `prenom` varchar(16) NOT NULL,
     `specialite` varchar(16) NOT NULL,
     `compte_login` varchar(16) NOT NULL,
-    FOREIGN KEY (`compte_login`) REFERENCES `Compte`(`login`)
+    FOREIGN KEY (`compte_login`) REFERENCES `Compte`(`login`) on update cascade on delete cascade
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table `Admin`
@@ -39,7 +39,7 @@ create table `Admin`
     `nom` varchar(16) NOT NULL,
     `prenom` varchar(16) NOT NULL,
     `compte_login` varchar(16) NOT NULL,
-    FOREIGN KEY (`compte_login`) REFERENCES `Compte`(`login`)
+    FOREIGN KEY (`compte_login`) REFERENCES `Compte`(`login`) on update cascade on delete cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 create table `Module`
@@ -50,7 +50,7 @@ create table `Module`
     `validation` char(1) DEFAULT 'F',
     `code_filiere` int NOT NULL,
     CONSTRAINT `ck_validation` CHECK (`validation` IN ('T', 'F')),
-    FOREIGN KEY (`code_filiere`) REFERENCES `Filiere`(`code`)
+    FOREIGN KEY (`code_filiere`) REFERENCES `Filiere`(`code`) on update cascade on delete cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 create table `Element_Module`
@@ -62,8 +62,8 @@ create table `Element_Module`
     `code_prof` bigint NOT NULL,
     `code_modul` int NOT NULL,
     CONSTRAINT `ck_validation` CHECK (`validation` IN ('T', 'F')),
-    FOREIGN KEY (`code_prof`) REFERENCES `Professeur`(`code`),
-    FOREIGN KEY (`code_modul`) REFERENCES `Module`(`code`)
+    FOREIGN KEY (`code_prof`) REFERENCES `Professeur`(`code`) on update cascade,
+    FOREIGN KEY (`code_modul`) REFERENCES `Module`(`code`) on update cascade on delete cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 create table `Modalite_Evaluation`
@@ -72,7 +72,7 @@ create table `Modalite_Evaluation`
     `nom` varchar(16) NOT NULL,
     `coef` tinyint NOT NULL,
     `code_elmodul` int NOT NULL,
-    FOREIGN KEY (`code_elmodul`) REFERENCES `Element_Module`(`code`)
+    FOREIGN KEY (`code_elmodul`) REFERENCES `Element_Module`(`code`) on delete cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 create table `Note`
@@ -82,8 +82,8 @@ create table `Note`
     `etd_absent` char(1),
     `code_etd` bigint NOT NULL,
     `code_modaleval` int NOT NULL,
-    FOREIGN KEY (`code_etd`) REFERENCES `Etudiant`(`code`),
-    FOREIGN KEY (`code_modaleval`) REFERENCES `Modalite_Evaluation`(`code`)
+    FOREIGN KEY (`code_etd`) REFERENCES `Etudiant`(`code`) on update cascade on delete cascade,
+    FOREIGN KEY (`code_modaleval`) REFERENCES `Modalite_Evaluation`(`code`) on delete cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 create table `Etd_elementmodul`
@@ -91,8 +91,8 @@ create table `Etd_elementmodul`
     `id` int PRIMARY KEY AUTO_INCREMENT,
     `code_etd` bigint NOT NULL,
     `code_elementmodul` int NOT NULL,
-    FOREIGN KEY (`code_etd`) REFERENCES `Etudiant`(`code`),
-    FOREIGN KEY (`code_elementmodul`) REFERENCES `Element_Module`(`code`)
+    FOREIGN KEY (`code_etd`) REFERENCES `Etudiant`(`code`) on update cascade on delete cascade,
+    FOREIGN KEY (`code_elementmodul`) REFERENCES `Element_Module`(`code`) on delete cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 create table `Filiere_elementmodul`
@@ -100,8 +100,8 @@ create table `Filiere_elementmodul`
     `id` int PRIMARY KEY AUTO_INCREMENT,
     `code_filiere` int NOT NULL,
     `code_elementmodul` int NOT NULL,
-    FOREIGN KEY (`code_filiere`) REFERENCES `Filiere`(`code`),
-    FOREIGN KEY (`code_elementmodul`) REFERENCES `Element_Module`(`code`)
+    FOREIGN KEY (`code_filiere`) REFERENCES `Filiere`(`code`) on update cascade on delete cascade,
+    FOREIGN KEY (`code_elementmodul`) REFERENCES `Element_Module`(`code`) on delete cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- Ajout d'un compte administrateur
