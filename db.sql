@@ -35,7 +35,7 @@ create table `Professeur`
 
 create table `Admin`
 (
-    `id` int PRIMARY KEY,
+    `id` int PRIMARY KEY AUTO_INCREMENT,
     `nom` varchar(16) NOT NULL,
     `prenom` varchar(16) NOT NULL,
     `compte_login` varchar(16) NOT NULL,
@@ -44,7 +44,7 @@ create table `Admin`
 
 create table `Module`
 (
-    `code` int PRIMARY KEY,
+    `code` int PRIMARY KEY AUTO_INCREMENT,
     `nom` varchar(16) NOT NULL,
     `semestre` char(2) NOT NULL,
     `validation` char(1) DEFAULT 'F',
@@ -55,7 +55,7 @@ create table `Module`
 
 create table `Element_Module`
 (
-    `code` int PRIMARY KEY,
+    `code` int PRIMARY KEY AUTO_INCREMENT,
     `nom` varchar(16) NOT NULL,
     `coef` tinyint NOT NULL,
     `validation` char(1) DEFAULT 'F',
@@ -68,7 +68,7 @@ create table `Element_Module`
 
 create table `Modalite_Evaluation`
 (
-    `code` int PRIMARY KEY,
+    `code` int PRIMARY KEY AUTO_INCREMENT,
     `nom` varchar(16) NOT NULL,
     `coef` tinyint NOT NULL,
     `code_elmodul` int NOT NULL,
@@ -77,7 +77,7 @@ create table `Modalite_Evaluation`
 
 create table `Note`
 (
-    `code` int PRIMARY KEY,
+    `code` int PRIMARY KEY AUTO_INCREMENT,
     `note_value`  tinyint,
     `etd_absent` char(1),
     `code_etd` bigint NOT NULL,
@@ -88,7 +88,7 @@ create table `Note`
 
 create table `Etd_elementmodul`
 (
-    `id` int PRIMARY KEY,
+    `id` int PRIMARY KEY AUTO_INCREMENT,
     `code_etd` bigint NOT NULL,
     `code_elementmodul` int NOT NULL,
     FOREIGN KEY (`code_etd`) REFERENCES `Etudiant`(`code`),
@@ -97,9 +97,13 @@ create table `Etd_elementmodul`
 
 create table `Filiere_elementmodul`
 (
-    `id` int PRIMARY KEY,
+    `id` int PRIMARY KEY AUTO_INCREMENT,
     `code_filiere` int NOT NULL,
     `code_elementmodul` int NOT NULL,
     FOREIGN KEY (`code_filiere`) REFERENCES `Filiere`(`code`),
     FOREIGN KEY (`code_elementmodul`) REFERENCES `Element_Module`(`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- Ajout d'un compte administrateur
+insert into `Compte` values("admin_admin", "21232f297a57a5a743894a0e4a801fc3");
+insert into `Admin`(`nom`, `prenom`, `compte_login`) values("GNEME", "Gilles", "admin_admin");

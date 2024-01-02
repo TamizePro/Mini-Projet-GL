@@ -11,9 +11,8 @@ public class ElementModule {
     private Module module;
     private List<Etudiant> etudiants;
     private List<Filiere> filieres;
-    private List<ModaliteEvaluation> modaliteEvaluationList;
 
-    public ElementModule(int code, String nom, int coefficient, boolean validation, Professeur professeur, Module module, List<Etudiant> etudiants, List<Filiere> filieres, List<ModaliteEvaluation> modaliteEvaluations) {
+    public ElementModule(int code, String nom, int coefficient, boolean validation, Professeur professeur, Module module, List<Etudiant> etudiants, List<Filiere> filieres) {
         this.code = code;
         this.nom = nom;
         this.coefficient = coefficient;
@@ -22,7 +21,6 @@ public class ElementModule {
         this.module = module;
         this.etudiants = etudiants;
         this.filieres = filieres;
-        this.modaliteEvaluationList = modaliteEvaluations;
     }
 
     public int getCode() {
@@ -87,13 +85,5 @@ public class ElementModule {
 
     public void setFilieres(List<Filiere> filieres) {
         this.filieres = filieres;
-    }
-
-    public List<ModaliteEvaluation> getModaliteEvaluationList() {
-        return modaliteEvaluationList;
-    }
-
-    public void setModaliteEvaluationList(List<ModaliteEvaluation> modaliteEvaluationList) {
-        this.modaliteEvaluationList = modaliteEvaluationList;
     }
 }

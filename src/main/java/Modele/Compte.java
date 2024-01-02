@@ -8,6 +8,7 @@ public class Compte {
         this.login = login;
         this.password = password;
     }
+
     public String getLogin() {
         return login;
     }

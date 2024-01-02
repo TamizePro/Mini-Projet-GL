@@ -7,14 +7,14 @@ public class Etudiant {
     private String nom;
     private String prenom;
     private List<ElementModule> elementModules;
-    private List<Note> notes;
+    private List<Note> noteslist;
 
-    public Etudiant(long code, String nom, String prenom, List<ElementModule> elementModules, List<Note> notes) {
+    public Etudiant(long code, String nom, String prenom, List<ElementModule> elementModules, List<Note> noteslist) {
         this.code = code;
         this.nom = nom;
         this.prenom = prenom;
         this.elementModules = elementModules;
-        this.notes = notes;
+        this.noteslist = noteslist;
     }
 
     public long getCode() {
@@ -49,11 +49,11 @@ public class Etudiant {
         this.elementModules = elementModules;
     }
 
-    public List<Note> getNotes() {
-        return notes;
+    public List<Note> getNoteslist() {
+        return noteslist;
     }
 
-    public void setNotes(List<Note> notes) {
-        this.notes = notes;
+    public void setNoteslist(List<Note> noteslist) {
+        this.noteslist = noteslist;
     }
 }

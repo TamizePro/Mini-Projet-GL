@@ -1,22 +1,17 @@
 package Modele;
 
-import java.util.List;
-
 public class Module {
     private int code;
     private String nom;
     private String semestre;
     private boolean validation;
-    private Filiere filiere;
-    private List<ElementModule> elementModuleList;
+    Filiere filiere;
 
-    public Module(int code, String nom, String semestre, boolean validation, Filiere filiere, List<ElementModule> elementModuleList) {
+    public Module(int code, String nom, String semestre, boolean validation) {
         this.code = code;
         this.nom = nom;
         this.semestre = semestre;
         this.validation = validation;
-        this.filiere = filiere;
-        this.elementModuleList = elementModuleList;
     }
 
     public int getCode() {
@@ -49,21 +44,5 @@ public class Module {
 
     public void setValidation(boolean validation) {
         this.validation = validation;
-    }
-
-    public List<ElementModule> getElementModuleList() {
-        return elementModuleList;
-    }
-
-    public void setElementModuleList(List<ElementModule> elementModuleList) {
-        this.elementModuleList = elementModuleList;
-    }
-
-    public Filiere getFiliere() {
-        return filiere;
-    }
-
-    public void setFiliere(Filiere filiere) {
-        this.filiere = filiere;
     }
 }

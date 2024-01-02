@@ -1,7 +1,5 @@
 package Modele;
 
-import java.util.List;
-
 // Modele.Professeur.java
 public class Professeur {
     private Compte compte;
@@ -9,16 +7,14 @@ public class Professeur {
     private String prenom;
     private String specialite;
     private long code;
-    private List<ElementModule> elementModules;
 
     // Constructeur
-    public Professeur(Compte compte, String nom, String prenom, String specialite, long code, List<ElementModule> elementModules) {
+    public Professeur(Compte compte, String nom, String prenom, String specialite, long code) {
         this.compte = compte;
         this.nom = nom;
         this.prenom = prenom;
         this.specialite = specialite;
         this.code = code;
-        this.elementModules = elementModules;
     }
 
     // Getters et setters
@@ -52,21 +48,5 @@ public class Professeur {
 
     public void setCode(int code) {
         this.code = code;
-    }
-
-    public List<ElementModule> getElementModules() {
-        return elementModules;
-    }
-
-    public void setElementModules(List<ElementModule> elementModules) {
-        this.elementModules = elementModules;
-    }
-
-    public Compte getCompte() {
-        return compte;
-    }
-
-    public void setCompte(Compte compte) {
-        this.compte = compte;
     }
 }
