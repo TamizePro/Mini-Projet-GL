@@ -107,3 +107,7 @@ create table `Filiere_elementmodul`
 -- Ajout d'un compte administrateur
 insert into `Compte` values("admin_admin", "21232f297a57a5a743894a0e4a801fc3");
 insert into `Admin`(`nom`, `prenom`, `compte_login`) values("GNEME", "Gilles", "admin_admin");
+
+-- Ajout données de test
+insert into `Compte` values("bourama", "hello");
+insert into `Compte` values("gg", "ggpwd");

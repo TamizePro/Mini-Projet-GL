@@ -12,11 +12,11 @@ public class AdminDAO implements IAdminDAO {
 
     @Override
     public Admin getAdmin(Compte compte){
-        String sql = "select * from Admin where login = ?;";
+        String sql = "select * from Admin where compte_login = ?;";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, compte.getLogin());
-            ResultSet resultSet = preparedStatement.executeQuery(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 admin = Admin.getInstance(compte, resultSet.getString("nom"),
                 resultSet.getString("prenom"));

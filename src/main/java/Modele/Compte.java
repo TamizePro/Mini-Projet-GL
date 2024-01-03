@@ -9,6 +9,17 @@ public class Compte {
         this.password = password;
     }
 
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o == this)
+            return true;
+        if (!(o instanceof Compte))
+            return false;
+        Compte oo = (Compte) o;
+        return oo.login.equals(login) && oo.password.equals(password);
+    }
+
     public String getLogin() {
         return login;
     }
