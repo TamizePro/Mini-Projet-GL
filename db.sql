@@ -111,3 +111,5 @@ insert into `Admin`(`nom`, `prenom`, `compte_login`) values("GNEME", "Gilles", "
 -- Ajout données de test
 insert into `Compte` values("bourama", "hello");
 insert into `Compte` values("gg", "ggpwd");
+insert into `Etudiant` values(20, "gg", "ggg");
+insert into `Etudiant` values(21, "Test", "test");

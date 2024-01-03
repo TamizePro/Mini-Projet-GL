@@ -9,12 +9,23 @@ public class Etudiant {
     private List<ElementModule> elementModules;
     private List<Note> noteslist;
 
-    public Etudiant(long code, String nom, String prenom, List<ElementModule> elementModules, List<Note> noteslist) {
-        this.code = code;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.elementModules = elementModules;
-        this.noteslist = noteslist;
+    public Etudiant(EtudiantBuilder etdbuilder) {
+        this.code = etdbuilder.getCode();
+        this.nom = etdbuilder.getNom();
+        this.prenom = etdbuilder.getPrenom();
+        this.elementModules = etdbuilder.getElementModules();
+        this.noteslist = etdbuilder.getNoteslist();
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o == this)
+            return true;
+        if (!(o instanceof Etudiant))
+            return false;
+        Etudiant oo = (Etudiant) o;
+        return oo.code == code && oo.nom.equals(nom) && oo.prenom.equals(prenom);
     }
 
     public long getCode() {
