@@ -113,3 +113,5 @@ insert into `Compte` values("bourama", "hello");
 insert into `Compte` values("gg", "ggpwd");
 insert into `Etudiant` values(20, "gg", "ggg");
 insert into `Etudiant` values(21, "Test", "test");
+insert into `Filiere` values(2, "IRIC");
+insert into `Filiere` values(3, "GI");

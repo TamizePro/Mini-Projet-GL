@@ -8,11 +8,22 @@ public class Filiere {
     private List<ElementModule> elementModules;
     private List<Module> modules;
 
-    public Filiere(int code, String nom, List<ElementModule> elementModules, List<Module> modules) {
-        this.code = code;
-        this.nom = nom;
-        this.elementModules = elementModules;
-        this.modules = modules;
+    public Filiere(FiliereBuilder fil) {
+        this.code = fil.getCode();
+        this.nom = fil.getNom();
+        this.elementModules = fil.getElementModules();
+        this.modules = fil.getModules();
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o == this)
+            return true;
+        if (!(o instanceof Filiere))
+            return false;
+        Filiere oo = (Filiere) o;
+        return oo.code == code && oo.nom.equals(nom);
     }
 
     public int getCode() {
