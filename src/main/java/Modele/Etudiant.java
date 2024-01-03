@@ -1,19 +1,20 @@
 package Modele;
 
 import java.util.List;
+import java.util.Set;
 
 public class Etudiant {
     private long code;
     private String nom;
     private String prenom;
-    private List<ElementModule> elementModules;
     private List<Note> noteslist;
+    private Set<Etd_elementmodul> etd_elementmoduls;
 
     public Etudiant(EtudiantBuilder etdbuilder) {
         this.code = etdbuilder.getCode();
         this.nom = etdbuilder.getNom();
         this.prenom = etdbuilder.getPrenom();
-        this.elementModules = etdbuilder.getElementModules();
+        this.etd_elementmoduls = etdbuilder.getEtd_elementmoduls();
         this.noteslist = etdbuilder.getNoteslist();
     }
 
@@ -52,12 +53,12 @@ public class Etudiant {
         this.nom = nom;
     }
 
-    public List<ElementModule> getElementModules() {
-        return elementModules;
+    public Set<Etd_elementmodul> getEtd_elementmoduls() {
+        return etd_elementmoduls;
     }
 
-    public void setElementModules(List<ElementModule> elementModules) {
-        this.elementModules = elementModules;
+    public void setEtd_elementmoduls(Set<Etd_elementmodul> etd_elementmoduls) {
+        this.etd_elementmoduls = etd_elementmoduls;
     }
 
     public List<Note> getNoteslist() {

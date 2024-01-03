@@ -15,7 +15,7 @@ public class FiliereDAO implements IFiliereDAO {
     @Override
     public boolean AddFiliere(Filiere filiere)
     {
-        String sql = "insert into Filiere values(?, ?);";
+        String sql = "insert into Filiere(code, nom) values(?, ?);";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, String.valueOf(filiere.getCode()));

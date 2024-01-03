@@ -15,7 +15,7 @@ public class EtudiantDAO implements IEtudiantDAO {
     @Override
     public boolean AddEtudiant(Etudiant etd)
     {
-        String sql = "insert into Etudiant values(?, ?, ?);";
+        String sql = "insert into Etudiant(code, nom, prenom) values(?, ?, ?);";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, String.valueOf(etd.getCode()));

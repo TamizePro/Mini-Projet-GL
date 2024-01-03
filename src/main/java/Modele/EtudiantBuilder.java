@@ -1,13 +1,14 @@
 package Modele;
 
 import java.util.List;
+import java.util.Set;
 
 public class EtudiantBuilder implements IEtudiantBuilder {
     private long code;
     private String nom;
     private String prenom;
-    private List<ElementModule> elementModules;
     private List<Note> noteslist;
+    private Set<Etd_elementmodul> etd_elementmoduls;
 
     public EtudiantBuilder(long code, String nom, String prenom)
     {
@@ -17,9 +18,9 @@ public class EtudiantBuilder implements IEtudiantBuilder {
     }
 
     @Override
-    public EtudiantBuilder elementModules(List<ElementModule> elementmodules)
+    public EtudiantBuilder etd_elementmoduls(Set<Etd_elementmodul> etd_elementmodul)
     {
-        this.elementModules = elementmodules;
+        this.etd_elementmoduls = etd_elementmodul;
         return this;
     }
 
@@ -38,8 +39,8 @@ public class EtudiantBuilder implements IEtudiantBuilder {
 
     public String getNom() {return nom;}
 
-    public List<ElementModule> getElementModules() {
-        return elementModules;
+    public Set<Etd_elementmodul> getEtd_elementmoduls() {
+        return etd_elementmoduls;
     }
 
     public List<Note> getNoteslist() {

@@ -1,10 +1,12 @@
 package Modele;
 
 import java.util.List;
+import java.util.Set;
+
 public class FiliereBuilder implements IFiliereBuilder {
     private int code;
     private String nom;
-    private List<ElementModule> elementModules;
+    private Set<Etd_elementmodul> etd_elementmoduls;
     private List<Module> modules;
 
     public FiliereBuilder(int code, String nom)
@@ -14,9 +16,9 @@ public class FiliereBuilder implements IFiliereBuilder {
     }
 
     @Override
-    public FiliereBuilder elementModules(List<ElementModule> elementmodules)
+    public FiliereBuilder etd_elementmoduls(Set<Etd_elementmodul> etd_elementmoduls)
     {
-        this.elementModules = elementmodules;
+        this.etd_elementmoduls = etd_elementmoduls;
         return this;
     }
 
@@ -35,8 +37,8 @@ public class FiliereBuilder implements IFiliereBuilder {
         return nom;
     }
 
-    public List<ElementModule> getElementModules() {
-        return elementModules;
+    public Set<Etd_elementmodul> getEtd_elementmoduls() {
+        return etd_elementmoduls;
     }
 
     public List<Module> getModules() {

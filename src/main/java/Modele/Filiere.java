@@ -1,17 +1,18 @@
 package Modele;
 
 import java.util.List;
+import java.util.Set;
 
 public class Filiere {
     private int code;
     private String nom;
-    private List<ElementModule> elementModules;
     private List<Module> modules;
+    private Set<Etd_elementmodul> etd_elementmoduls;
 
     public Filiere(FiliereBuilder fil) {
         this.code = fil.getCode();
         this.nom = fil.getNom();
-        this.elementModules = fil.getElementModules();
+        this.etd_elementmoduls = fil.getEtd_elementmoduls();
         this.modules = fil.getModules();
     }
 
@@ -42,12 +43,12 @@ public class Filiere {
         this.nom = nom;
     }
 
-    public List<ElementModule> getElementModules() {
-        return elementModules;
+    public Set<Etd_elementmodul> getEtd_elementmoduls() {
+        return etd_elementmoduls;
     }
 
-    public void setElementModules(List<ElementModule> elementModules) {
-        this.elementModules = elementModules;
+    public void setEtd_elementmoduls(Set<Etd_elementmodul> etd_elementmoduls) {
+        this.etd_elementmoduls = etd_elementmoduls;
     }
 
     public List<Module> getModules() {
