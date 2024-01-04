@@ -44,7 +44,7 @@ public class CompteDAOTest {
 		String login;
 		compte = new Compte("bourama", "hello");
 		login = "bourama";
-		compte.setLogin("Alain");
+		compte.setLogin("Aalain");
 		boolean actualValue = compteDAO.UpdateCompteByLogin(compte, login);
 		// TODO: assert scenario
 		assertTrue(actualValue, "Updating compte should return true on success");
@@ -65,12 +65,13 @@ public class CompteDAOTest {
 
 	@Test
 	public void shouldGetAllCompte() {
-		compteDAO.UpdateCompteByLogin(new Compte("bourama", "hello"), "Alain");
+		compteDAO.UpdateCompteByLogin(new Compte("bourama", "hello"), "Aalain");
 		List<Compte> actualValue = compteDAO.GetAllCompte();
 		List<Compte> realval = new ArrayList();
 		realval.add(new Compte("gg", "ggpwd"));
 		realval.add(new Compte("admin_admin", "21232f297a57a5a743894a0e4a801fc3"));
 		realval.add(new Compte("bourama", "hello"));
+		realval.add(new Compte("alain", "hello"));
 		// TODO: assert scenario
 		assertTrue(realval.size() == actualValue.size() && realval.containsAll(actualValue)
 			&& actualValue.containsAll(realval), "List should be the same");

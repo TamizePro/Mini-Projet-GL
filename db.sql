@@ -117,9 +117,11 @@ insert into `Admin`(`nom`, `prenom`, `compte_login`) values("GNEME", "Gilles", "
 -- Ajout données de test
 insert into `Compte` values("bourama", "hello");
 insert into `Compte` values("gg", "ggpwd");
+insert into `Compte` values('alain', 'hello');
 insert into `Etudiant`(`code`, `nom`, `prenom`) values(20, "gg", "ggg");
 insert into `Etudiant`(`code`, `nom`, `prenom`) values(21, "Test", "test");
 insert into `Filiere`(`code`, `nom`) values(2, "IRIC");
 insert into `Filiere`(`code`, `nom`) values(3, "GI");
 insert into `Professeur` values(13, "Nom", "Prenom", "Maths", "bourama");
 insert into `Professeur` values(14, "Nomd", "Prenoms", "Maths", "admin_admin");
+insert into `Professeur` values(11, "Nom", "Prenom", "Maths", "alain");
