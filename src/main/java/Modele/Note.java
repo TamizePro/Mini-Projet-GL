@@ -4,15 +4,27 @@ public class Note {
     private int code;
     private float note;
     private boolean etudiant_absent;
-    private Etudiant etudiant;
-    private ModaliteEvaluation modaliteEvaluation;
 
-    public Note(int code, float note, boolean etudiantAbsent, Etudiant etudiant, ModaliteEvaluation modaliteEvaluation) {
+    public Note(int code, float note, boolean etudiantAbsent) {
         this.code = code;
         this.note = note;
-        etudiant_absent = etudiantAbsent;
-        this.etudiant = etudiant;
-        this.modaliteEvaluation = modaliteEvaluation;
+        this.etudiant_absent = etudiantAbsent;
+    }
+
+    public Note(float note, boolean etudiantAbsent) {
+        this.note = note;
+        this.etudiant_absent = etudiantAbsent;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o == this)
+            return true;
+        if (!(o instanceof Note))
+            return false;
+        Note oo = (Note) o;
+        return oo.code == code && oo.note == note && oo.etudiant_absent == etudiant_absent;
     }
 
     public int getCode() {
@@ -37,21 +49,5 @@ public class Note {
 
     public void setNote(float note) {
         this.note = note;
-    }
-
-    public Etudiant getEtudiant() {
-        return etudiant;
-    }
-
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
-    }
-
-    public ModaliteEvaluation getModaliteEvaluation() {
-        return modaliteEvaluation;
-    }
-
-    public void setModaliteEvaluation(ModaliteEvaluation modaliteEvaluation) {
-        this.modaliteEvaluation = modaliteEvaluation;
     }
 }
