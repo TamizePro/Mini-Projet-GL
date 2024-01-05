@@ -11,10 +11,11 @@ create table `Compte`
     `password` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- Note dao is ok
 create table `Note`
 (
     `code` int PRIMARY KEY AUTO_INCREMENT,
-    `note_value`  tinyint,
+    `note_value`  float,
     `etd_absent` char(1),
     CONSTRAINT `ck_etd_absent` CHECK (`etd_absent` IN ('T', 'F'))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
