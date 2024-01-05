@@ -18,7 +18,8 @@ public class MySQLConnection {
             connConfig.setProperty("characterEncoding", "utf-8");
             try{
                 /*Class.forName("com.mysql.cj.jdbc.Driver"); // for mysql*/
-                Class.forName("org.mariadb.jdbc.Driver"); // for mariadb
+                //Class.forName("org.mariadb.jdbc.Driver"); // for mariadb
+                Class.forName("org.postgresql.Driver"); // for mariadb
                 connextion = DriverManager.getConnection(dotenv.get("DB_URL"), connConfig);
             } catch (ClassNotFoundException | SQLException e){
                 e.printStackTrace();
