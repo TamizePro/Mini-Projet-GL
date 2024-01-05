@@ -4,25 +4,22 @@ create database `gilles_bourama_alain`;
 use `gilles_bourama_alain`;
 
 -- Création des tables suivant notre diagramme des classes
+-- Compte dao is ok
 create table `Compte`
 (
     `login` varchar(16) NOT NULL PRIMARY KEY,
     `password` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-create table `Filiere`
+create table `Note`
 (
-    `code` int NOT NULL PRIMARY KEY,
-    `nom` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `code` int PRIMARY KEY AUTO_INCREMENT,
+    `note_value`  tinyint,
+    `etd_absent` char(1),
+    CONSTRAINT `ck_etd_absent` CHECK (`etd_absent` IN ('T', 'F'))
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-create table `Etudiant`
-(
-    `code` bigint NOT NULL PRIMARY KEY,
-    `nom` varchar(16) NOT NULL,
-    `prenom` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+-- Professeur dao is ok
 create table `Professeur`
 (
     `code` bigint NOT NULL PRIMARY KEY,
@@ -30,27 +27,28 @@ create table `Professeur`
     `prenom` varchar(16) NOT NULL,
     `specialite` varchar(16) NOT NULL,
     `compte_login` varchar(16) NOT NULL,
-    FOREIGN KEY (`compte_login`) REFERENCES `Compte`(`login`) on update cascade on delete cascade
+    FOREIGN KEY (`compte_login`) REFERENCES `Compte`(`login`) on update cascade on delete cascade,
+    UNIQUE(`compte_login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- admin dao is ok
 create table `Admin`
 (
     `id` int PRIMARY KEY AUTO_INCREMENT,
     `nom` varchar(16) NOT NULL,
     `prenom` varchar(16) NOT NULL,
     `compte_login` varchar(16) NOT NULL,
-    FOREIGN KEY (`compte_login`) REFERENCES `Compte`(`login`) on update cascade on delete cascade
+    FOREIGN KEY (`compte_login`) REFERENCES `Compte`(`login`) on update cascade on delete cascade,
+    UNIQUE(`compte_login`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-create table `Module`
+create table `Modalite_Evaluation`
 (
     `code` int PRIMARY KEY AUTO_INCREMENT,
     `nom` varchar(16) NOT NULL,
-    `semestre` char(2) NOT NULL,
-    `validation` char(1) DEFAULT 'F',
-    `code_filiere` int NOT NULL,
-    CONSTRAINT `ck_validation` CHECK (`validation` IN ('T', 'F')),
-    FOREIGN KEY (`code_filiere`) REFERENCES `Filiere`(`code`) on update cascade on delete cascade
+    `coef` tinyint NOT NULL,
+    `code_note` int,
+    FOREIGN KEY (`code_note`) REFERENCES `Note`(`code`) on update cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 create table `Element_Module`
@@ -59,32 +57,40 @@ create table `Element_Module`
     `nom` varchar(16) NOT NULL,
     `coef` tinyint NOT NULL,
     `validation` char(1) DEFAULT 'F',
-    `code_prof` bigint NOT NULL,
-    `code_modul` int NOT NULL,
+    `code_modal` int,
     CONSTRAINT `ck_validation` CHECK (`validation` IN ('T', 'F')),
-    FOREIGN KEY (`code_prof`) REFERENCES `Professeur`(`code`) on update cascade,
-    FOREIGN KEY (`code_modul`) REFERENCES `Module`(`code`) on update cascade on delete cascade
+    FOREIGN KEY (`code_modal`) REFERENCES `Modalite_Evaluation`(`code`) on update cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-create table `Modalite_Evaluation`
+create table `Module`
 (
     `code` int PRIMARY KEY AUTO_INCREMENT,
     `nom` varchar(16) NOT NULL,
-    `coef` tinyint NOT NULL,
-    `code_elmodul` int NOT NULL,
-    FOREIGN KEY (`code_elmodul`) REFERENCES `Element_Module`(`code`) on delete cascade
+    `semestre` char(2) NOT NULL,
+    `validation` char(1) DEFAULT 'F',
+    `code_elmodul` int,
+    CONSTRAINT `ck_validation` CHECK (`validation` IN ('T', 'F')),
+    FOREIGN KEY (`code_elmodul`) REFERENCES `Element_Module`(`code`) on update cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-create table `Note`
+-- Filiere dao is ok
+create table `Filiere`
 (
-    `code` int PRIMARY KEY AUTO_INCREMENT,
-    `note_value`  tinyint,
-    `etd_absent` char(1),
-    `code_etd` bigint NOT NULL,
-    `code_modaleval` int NOT NULL,
-    FOREIGN KEY (`code_etd`) REFERENCES `Etudiant`(`code`) on update cascade on delete cascade,
-    FOREIGN KEY (`code_modaleval`) REFERENCES `Modalite_Evaluation`(`code`) on delete cascade
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+    `code` int NOT NULL PRIMARY KEY,
+    `nom` varchar(16) NOT NULL,
+    `code_modul` int,
+    FOREIGN KEY (`code_modul`) REFERENCES `Module`(`code`) on update cascade
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Etudiant dao is ok
+create table `Etudiant`
+(
+    `code` bigint NOT NULL PRIMARY KEY,
+    `nom` varchar(16) NOT NULL,
+    `prenom` varchar(16) NOT NULL,
+    `code_note` int,
+    FOREIGN KEY (`code_note`) REFERENCES `Note`(`code`) on update cascade
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table `Etd_elementmodul`
 (
@@ -107,3 +113,13 @@ create table `Filiere_elementmodul`
 -- Ajout d'un compte administrateur
 insert into `Compte` values("admin_admin", "21232f297a57a5a743894a0e4a801fc3");
 insert into `Admin`(`nom`, `prenom`, `compte_login`) values("GNEME", "Gilles", "admin_admin");
+
+-- Ajout données de test
+insert into `Compte` values("bourama", "hello");
+insert into `Compte` values("gg", "ggpwd");
+insert into `Etudiant`(`code`, `nom`, `prenom`) values(20, "gg", "ggg");
+insert into `Etudiant`(`code`, `nom`, `prenom`) values(21, "Test", "test");
+insert into `Filiere`(`code`, `nom`) values(2, "IRIC");
+insert into `Filiere`(`code`, `nom`) values(3, "GI");
+insert into `Professeur` values(13, "Nom", "Prenom", "Maths", "bourama");
+insert into `Professeur` values(14, "Nomd", "Prenoms", "Maths", "admin_admin");

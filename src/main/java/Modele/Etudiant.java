@@ -1,20 +1,32 @@
 package Modele;
 
 import java.util.List;
+import java.util.Set;
 
 public class Etudiant {
     private long code;
     private String nom;
     private String prenom;
-    private List<ElementModule> elementModules;
     private List<Note> noteslist;
+    private Set<Etd_elementmodul> etd_elementmoduls;
 
-    public Etudiant(long code, String nom, String prenom, List<ElementModule> elementModules, List<Note> noteslist) {
-        this.code = code;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.elementModules = elementModules;
-        this.noteslist = noteslist;
+    public Etudiant(EtudiantBuilder etdbuilder) {
+        this.code = etdbuilder.getCode();
+        this.nom = etdbuilder.getNom();
+        this.prenom = etdbuilder.getPrenom();
+        this.etd_elementmoduls = etdbuilder.getEtd_elementmoduls();
+        this.noteslist = etdbuilder.getNoteslist();
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o == this)
+            return true;
+        if (!(o instanceof Etudiant))
+            return false;
+        Etudiant oo = (Etudiant) o;
+        return oo.code == code && oo.nom.equals(nom) && oo.prenom.equals(prenom);
     }
 
     public long getCode() {
@@ -41,12 +53,12 @@ public class Etudiant {
         this.nom = nom;
     }
 
-    public List<ElementModule> getElementModules() {
-        return elementModules;
+    public Set<Etd_elementmodul> getEtd_elementmoduls() {
+        return etd_elementmoduls;
     }
 
-    public void setElementModules(List<ElementModule> elementModules) {
-        this.elementModules = elementModules;
+    public void setEtd_elementmoduls(Set<Etd_elementmodul> etd_elementmoduls) {
+        this.etd_elementmoduls = etd_elementmoduls;
     }
 
     public List<Note> getNoteslist() {

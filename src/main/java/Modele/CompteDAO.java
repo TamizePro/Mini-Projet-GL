@@ -25,7 +25,6 @@ public class CompteDAO implements ICompteDAO{
                 return true;
         } catch (SQLException e){
             e.printStackTrace();
-            return false;
         }
         return false;
     }
@@ -42,7 +41,6 @@ public class CompteDAO implements ICompteDAO{
                 return true;
         } catch (SQLException e){
             e.printStackTrace();
-            return false;
         }
         return false;
     }
@@ -53,7 +51,7 @@ public class CompteDAO implements ICompteDAO{
     {
         String sql = "update Compte set login = ?, password = ? where login = ?";
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, compte.getLogin());
             preparedStatement.setString(2, compte.getPassword());
             preparedStatement.setString(3, login);
@@ -62,7 +60,6 @@ public class CompteDAO implements ICompteDAO{
                 return true;
         } catch (SQLException e){
             e.printStackTrace();
-            return false;
         }
         return false;
     }
@@ -70,18 +67,17 @@ public class CompteDAO implements ICompteDAO{
     @Override
     public Compte GetCompte(String login, String password)
     {
-        String sql = "select from Compte where login = ? and password = ?;";
+        String sql = "select * from Compte where login = ? and password = ?;";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, password);
-            ResultSet resultSet = preparedStatement.executeQuery(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 return new Compte(resultSet.getString("login"), resultSet.getString("password"));
             }
         } catch (SQLException e){
             e.printStackTrace();
-            return null;
         }
         return null;
     }

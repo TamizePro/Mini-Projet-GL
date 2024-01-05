@@ -11,6 +11,16 @@ public class Admin {
         this.nom = nom;
         this.prenom = prenom;
     }
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o == this)
+            return true;
+        if (!(o instanceof Admin))
+            return false;
+        Admin oo = (Admin) o;
+        return oo.compte.equals(compte) && oo.nom.equals(nom) && oo.prenom.equals(prenom);
+    }
     public static Admin getInstance(Compte compte, String nom, String prenom){
         if (admin == null)
             admin = new Admin(compte, nom, prenom);

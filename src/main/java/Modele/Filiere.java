@@ -1,18 +1,30 @@
 package Modele;
 
 import java.util.List;
+import java.util.Set;
 
 public class Filiere {
     private int code;
     private String nom;
-    private List<ElementModule> elementModules;
     private List<Module> modules;
+    private Set<Etd_elementmodul> etd_elementmoduls;
 
-    public Filiere(int code, String nom, List<ElementModule> elementModules, List<Module> modules) {
-        this.code = code;
-        this.nom = nom;
-        this.elementModules = elementModules;
-        this.modules = modules;
+    public Filiere(FiliereBuilder fil) {
+        this.code = fil.getCode();
+        this.nom = fil.getNom();
+        this.etd_elementmoduls = fil.getEtd_elementmoduls();
+        this.modules = fil.getModules();
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o == this)
+            return true;
+        if (!(o instanceof Filiere))
+            return false;
+        Filiere oo = (Filiere) o;
+        return oo.code == code && oo.nom.equals(nom);
     }
 
     public int getCode() {
@@ -31,12 +43,12 @@ public class Filiere {
         this.nom = nom;
     }
 
-    public List<ElementModule> getElementModules() {
-        return elementModules;
+    public Set<Etd_elementmodul> getEtd_elementmoduls() {
+        return etd_elementmoduls;
     }
 
-    public void setElementModules(List<ElementModule> elementModules) {
-        this.elementModules = elementModules;
+    public void setEtd_elementmoduls(Set<Etd_elementmodul> etd_elementmoduls) {
+        this.etd_elementmoduls = etd_elementmoduls;
     }
 
     public List<Module> getModules() {
