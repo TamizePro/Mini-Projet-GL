@@ -32,7 +32,6 @@ public class NoteDAO implements INoteDAO {
         String sql = "insert into Note(note_value, etd_absent) values(?, ?);";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            //preparedStatement.setString(1, String.valueOf(note.getCode()));
             preparedStatement.setString(1, String.valueOf(note.getNote()));
             preparedStatement.setString(2, get_isEtudiant_absent(note.isEtudiant_absent()));
             int affectedRows = preparedStatement.executeUpdate();

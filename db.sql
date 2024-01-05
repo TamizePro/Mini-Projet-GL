@@ -43,11 +43,12 @@ create table `Admin`
     UNIQUE(`compte_login`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+-- Modalite_Evaluation DAO is ok
 create table `Modalite_Evaluation`
 (
     `code` int PRIMARY KEY AUTO_INCREMENT,
     `nom` varchar(16) NOT NULL,
-    `coef` tinyint NOT NULL,
+    `coef` float NOT NULL,
     `code_note` int,
     FOREIGN KEY (`code_note`) REFERENCES `Note`(`code`) on update cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -126,3 +127,4 @@ insert into `Filiere`(`code`, `nom`) values(3, "GI");
 insert into `Professeur` values(13, "Nom", "Prenom", "Maths", "bourama");
 insert into `Professeur` values(14, "Nomd", "Prenoms", "Maths", "admin_admin");
 insert into `Professeur` values(11, "Nom", "Prenom", "Maths", "alain");
+-- insert into `Note`(`note_value`, `etd_absent`) values(20, 'F'); for ModaliteEvaluationDAOTest
