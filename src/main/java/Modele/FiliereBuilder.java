@@ -6,7 +6,7 @@ import java.util.Set;
 public class FiliereBuilder implements IFiliereBuilder {
     private int code;
     private String nom;
-    private Set<Etd_elementmodul> etd_elementmoduls;
+    private Set<Filiere_elementmodul> etd_elementmoduls;
     private List<Module> modules;
 
     public FiliereBuilder(int code, String nom)
@@ -16,7 +16,7 @@ public class FiliereBuilder implements IFiliereBuilder {
     }
 
     @Override
-    public FiliereBuilder etd_elementmoduls(Set<Etd_elementmodul> etd_elementmoduls)
+    public FiliereBuilder etd_elementmoduls(Set<Filiere_elementmodul> etd_elementmoduls)
     {
         this.etd_elementmoduls = etd_elementmoduls;
         return this;
@@ -37,7 +37,7 @@ public class FiliereBuilder implements IFiliereBuilder {
         return nom;
     }
 
-    public Set<Etd_elementmodul> getEtd_elementmoduls() {
+    public Set<Filiere_elementmodul> getEtd_elementmoduls() {
         return etd_elementmoduls;
     }
 

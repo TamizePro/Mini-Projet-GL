@@ -7,7 +7,7 @@ public class Filiere {
     private int code;
     private String nom;
     private List<Module> modules;
-    private Set<Etd_elementmodul> etd_elementmoduls;
+    private Set<Filiere_elementmodul> etd_elementmoduls;
 
     public Filiere(FiliereBuilder fil) {
         this.code = fil.getCode();
@@ -43,11 +43,11 @@ public class Filiere {
         this.nom = nom;
     }
 
-    public Set<Etd_elementmodul> getEtd_elementmoduls() {
+    public Set<Filiere_elementmodul> getEtd_elementmoduls() {
         return etd_elementmoduls;
     }
 
-    public void setEtd_elementmoduls(Set<Etd_elementmodul> etd_elementmoduls) {
+    public void setEtd_elementmoduls(Set<Filiere_elementmodul> etd_elementmoduls) {
         this.etd_elementmoduls = etd_elementmoduls;
     }
 

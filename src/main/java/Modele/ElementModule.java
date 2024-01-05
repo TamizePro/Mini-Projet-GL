@@ -1,6 +1,7 @@
 package Modele;
 
 import java.util.List;
+import java.util.Set;
 
 public class ElementModule {
     private int code;
@@ -8,6 +9,8 @@ public class ElementModule {
     private float coefficient;
     private boolean validation;
     private List<ModaliteEvaluation> modals;
+    private Set<Etd_elementmodul> etd_elementmodul;
+    private Set<Filiere_elementmodul> filiere_elementmodul;
 
     public ElementModule(ElementModuleBuilder elmod) {
         this.code = elmod.getCode();
@@ -15,6 +18,8 @@ public class ElementModule {
         this.coefficient = elmod.getCoefficient();
         this.validation = elmod.isValidation();
         this.modals = elmod.getModals();
+        this.etd_elementmodul = elmod.getEtd_elementmodul();
+        this.filiere_elementmodul = elmod.getFiliere_elementmodul();
     }
 
     @Override
@@ -67,5 +72,21 @@ public class ElementModule {
 
     public void setModals(List<ModaliteEvaluation> modals) {
         this.modals = modals;
+    }
+
+    public Set<Etd_elementmodul> getEtd_elementmodul() {
+        return etd_elementmodul;
+    }
+
+    public void setEtd_elementmodul(Set<Etd_elementmodul> etd_elementmodul) {
+        this.etd_elementmodul = etd_elementmodul;
+    }
+
+    public Set<Filiere_elementmodul> getFiliere_elementmodul() {
+        return filiere_elementmodul;
+    }
+
+    public void setFiliere_elementmodul(Set<Filiere_elementmodul> filiere_elementmodul) {
+        this.filiere_elementmodul = filiere_elementmodul;
     }
 }

@@ -96,6 +96,7 @@ create table `Etudiant`
     FOREIGN KEY (`code_note`) REFERENCES `Note`(`code`) on update cascade
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- Etd_elementmodul DAO is ok
 create table `Etd_elementmodul`
 (
     `id` int PRIMARY KEY AUTO_INCREMENT,
@@ -105,6 +106,7 @@ create table `Etd_elementmodul`
     FOREIGN KEY (`code_elementmodul`) REFERENCES `Element_Module`(`code`) on delete cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+-- 
 create table `Filiere_elementmodul`
 (
     `id` int PRIMARY KEY AUTO_INCREMENT,

@@ -1,6 +1,7 @@
 package Modele;
 
 public class Etd_elementmodul {
+    private int id;
     private long code_etd;
     private int code_elementmodul;
 
@@ -8,6 +9,21 @@ public class Etd_elementmodul {
         this.code_etd = code_etd;
         this.code_elementmodul = code_elementmodul;
     }
+
+    public Etd_elementmodul(int id, long code_etd, int code_elementmodul){
+        this.id = id;
+        this.code_etd = code_etd;
+        this.code_elementmodul = code_elementmodul;
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
     public long getCode_etd(){
         return code_etd;
     }
