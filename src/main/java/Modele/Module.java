@@ -1,17 +1,32 @@
 package Modele;
 
+import java.util.List;
+
 public class Module {
     private int code;
     private String nom;
     private String semestre;
     private boolean validation;
-    Filiere filiere;
+    private List<ElementModule> elmods;
 
-    public Module(int code, String nom, String semestre, boolean validation) {
-        this.code = code;
-        this.nom = nom;
-        this.semestre = semestre;
-        this.validation = validation;
+    public Module(ModuleBuilder modb) {
+        this.code = modb.getCode();
+        this.nom = modb.getNom();
+        this.semestre = modb.getSemestre();
+        this.validation = modb.isValidation();
+        this.elmods = modb.getElmods();
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o == this)
+            return true;
+        if (!(o instanceof Module))
+            return false;
+        Module oo = (Module) o;
+        return oo.code == code && oo.nom.equals(nom)
+            && oo.semestre.equals(semestre) && oo.validation == validation;
     }
 
     public int getCode() {
@@ -44,5 +59,13 @@ public class Module {
 
     public void setValidation(boolean validation) {
         this.validation = validation;
+    }
+
+    public List<ElementModule> getElmods() {
+        return elmods;
+    }
+
+    public void setElmods(List<ElementModule> elmods) {
+        this.elmods = elmods;
     }
 }
