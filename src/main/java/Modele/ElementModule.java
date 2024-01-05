@@ -5,22 +5,28 @@ import java.util.List;
 public class ElementModule {
     private int code;
     private String nom;
-    private int coefficient;
+    private float coefficient;
     private boolean validation;
-    private Professeur professeur;
-    private Module module;
-    private List<Etudiant> etudiants;
-    private List<Filiere> filieres;
+    private List<ModaliteEvaluation> modals;
 
-    public ElementModule(int code, String nom, int coefficient, boolean validation, Professeur professeur, Module module, List<Etudiant> etudiants, List<Filiere> filieres) {
-        this.code = code;
-        this.nom = nom;
-        this.coefficient = coefficient;
-        this.validation = validation;
-        this.professeur = professeur;
-        this.module = module;
-        this.etudiants = etudiants;
-        this.filieres = filieres;
+    public ElementModule(ElementModuleBuilder elmod) {
+        this.code = elmod.getCode();
+        this.nom = elmod.getNom();
+        this.coefficient = elmod.getCoefficient();
+        this.validation = elmod.isValidation();
+        this.modals = elmod.getModals();
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o == this)
+            return true;
+        if (!(o instanceof ElementModule))
+            return false;
+        ElementModule oo = (ElementModule) o;
+        return oo.code == code && oo.nom.equals(nom) && oo.coefficient == coefficient
+            && oo.validation == validation;
     }
 
     public int getCode() {
@@ -31,11 +37,11 @@ public class ElementModule {
         this.code = code;
     }
 
-    public int getCoefficient() {
+    public float getCoefficient() {
         return coefficient;
     }
 
-    public void setCoefficient(int coefficient) {
+    public void setCoefficient(float coefficient) {
         this.coefficient = coefficient;
     }
 
@@ -55,35 +61,11 @@ public class ElementModule {
         this.validation = validation;
     }
 
-    public List<Etudiant> getEtudiants() {
-        return etudiants;
+    public List<ModaliteEvaluation> getModals() {
+        return modals;
     }
 
-    public void setEtudiants(List<Etudiant> etudiants) {
-        this.etudiants = etudiants;
-    }
-
-    public Professeur getProfesseur() {
-        return professeur;
-    }
-
-    public void setProfesseur(Professeur professeur) {
-        this.professeur = professeur;
-    }
-
-    public Module getModule() {
-        return module;
-    }
-
-    public void setModule(Module module) {
-        this.module = module;
-    }
-
-    public List<Filiere> getFilieres() {
-        return filieres;
-    }
-
-    public void setFilieres(List<Filiere> filieres) {
-        this.filieres = filieres;
+    public void setModals(List<ModaliteEvaluation> modals) {
+        this.modals = modals;
     }
 }

@@ -53,11 +53,12 @@ create table `Modalite_Evaluation`
     FOREIGN KEY (`code_note`) REFERENCES `Note`(`code`) on update cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+-- Element_Module DAO is ok
 create table `Element_Module`
 (
     `code` int PRIMARY KEY AUTO_INCREMENT,
     `nom` varchar(16) NOT NULL,
-    `coef` tinyint NOT NULL,
+    `coef` float NOT NULL,
     `validation` char(1) DEFAULT 'F',
     `code_modal` int,
     CONSTRAINT `ck_validation` CHECK (`validation` IN ('T', 'F')),
@@ -127,4 +128,4 @@ insert into `Filiere`(`code`, `nom`) values(3, "GI");
 insert into `Professeur` values(13, "Nom", "Prenom", "Maths", "bourama");
 insert into `Professeur` values(14, "Nomd", "Prenoms", "Maths", "admin_admin");
 insert into `Professeur` values(11, "Nom", "Prenom", "Maths", "alain");
--- insert into `Note`(`note_value`, `etd_absent`) values(20, 'F'); for ModaliteEvaluationDAOTest
+-- insert into `Note`(`note_value`, `etd_absent`) values(20, 'F'); --for ModaliteEvaluationDAOTest

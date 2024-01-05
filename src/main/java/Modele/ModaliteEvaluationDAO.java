@@ -13,14 +13,17 @@ public class ModaliteEvaluationDAO implements IModaliteEvaluationDAO {
     }
 
     @Override
-    public boolean AddModaliteEvaluation(ModaliteEvaluation modal, int code_note)
+    public boolean AddModaliteEvaluation(ModaliteEvaluation modal, Integer code_note)
     {
         String sql = "insert into Modalite_Evaluation(nom, coef, code_note) values(?, ?, ?);";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, modal.getNom());
             preparedStatement.setString(2, String.valueOf(modal.getCoefficient()));
-            preparedStatement.setString(3, String.valueOf(code_note));
+            if (code_note == null)
+                preparedStatement.setNull(3, Types.INTEGER);
+            else
+                preparedStatement.setString(3, String.valueOf(code_note));
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0)
                 return true;
@@ -47,14 +50,17 @@ public class ModaliteEvaluationDAO implements IModaliteEvaluationDAO {
     }
 
     @Override
-    public boolean UpdateModaliteEvaluationByCode(ModaliteEvaluation modal, int code_note)
+    public boolean UpdateModaliteEvaluationByCode(ModaliteEvaluation modal, Integer code_note)
     {
         String sql = "update Modalite_Evaluation set nom = ?, coef = ?, code_note = ? where code = ?";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, modal.getNom());
             preparedStatement.setString(2, String.valueOf(modal.getCoefficient()));
-            preparedStatement.setString(3, String.valueOf(code_note));
+            if (code_note == null)
+                preparedStatement.setNull(3, Types.INTEGER);
+            else
+                preparedStatement.setString(3, String.valueOf(code_note));
             preparedStatement.setString(4, String.valueOf(modal.getCode()));
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0)
