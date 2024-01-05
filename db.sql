@@ -65,6 +65,7 @@ create table `Element_Module`
     FOREIGN KEY (`code_modal`) REFERENCES `Modalite_Evaluation`(`code`) on update cascade
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+-- Module DAO is ok
 create table `Module`
 (
     `code` int PRIMARY KEY AUTO_INCREMENT,
