@@ -2,17 +2,18 @@ package Modele;
 
 import java.sql.*;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Etd_elementmodulDAO implements IEtd_elementmodulDAO {
     private Connection connection;
 
-    public Etd_elementmodul(Connection connection)
+    public Etd_elementmodulDAO(Connection connection)
     {
         this.connection = connection;
     }
 
     @Override
-    public boolean AddEtd_elementmodul(Etd_elementmo etdel)
+    public boolean AddEtd_elementmodul(Etd_elementmodul etdel)
     {
         String sql = "insert into Etd_elementmodul(code_etd, code_elementmodul) values(?, ?);";
         try{
