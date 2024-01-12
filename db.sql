@@ -117,7 +117,7 @@ create table `Filiere_elementmodul`
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- Ajout d'un compte administrateur
-insert into `Compte` values("admin_admin", "21232f297a57a5a743894a0e4a801fc3");
+insert into `Compte` values("admin_admin", "3dd408f20375d691865c823a2cb5b15c");
 insert into `Admin`(`nom`, `prenom`, `compte_login`) values("GNEME", "Gilles", "admin_admin");
 
 -- Ajout données de test

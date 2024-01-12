@@ -1,5 +1,5 @@
 package Controleur.Admin;
-
+/*
 import Modele.*;
 import Modele.Filiere;
 
@@ -103,7 +103,7 @@ public class FiliereServlet extends HttpServlet{
                 response.sendRedirect(request.getContextPath() + "/comptes");
             } else {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
-            }*/
+            }*\\/
         } else {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
         }
@@ -111,3 +111,4 @@ public class FiliereServlet extends HttpServlet{
 }
 
 
+*/

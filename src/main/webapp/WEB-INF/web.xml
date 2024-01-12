@@ -4,4 +4,26 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <welcome-file-list>   
+   <welcome-file>index.jsp</welcome-file>  
+  </welcome-file-list> 
+
+  <servlet>
+      <servlet-name>Controleur.LoginServlet</servlet-name>
+      <servlet-class>Controleur.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>Controleur.LoginServlet</servlet-name>
+      <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+      <servlet-name>Controleur.WelcomeServlet</servlet-name>
+      <servlet-class>Controleur.WelcomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>Controleur.WelcomeServlet</servlet-name>
+      <url-pattern>/Welcome</url-pattern>
+  </servlet-mapping>
 </web-app>

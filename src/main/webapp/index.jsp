@@ -1,18 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Login V10</title>
+<title>Mini-Projet-GL</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+<link rel="icon" type="image/png" href="img/ap2.ico" />
 
 <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-
-<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 
 <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 
@@ -33,7 +29,7 @@
 <div class="limiter">
 <div class="container-login100">
 <div class="wrap-login100 p-t-50 p-b-90">
-<form class="login100-form validate-form flex-sb flex-w">
+<form class="login100-form validate-form flex-sb flex-w" method="post" action="login">
 <span class="login100-form-title p-b-51">
 Login
 </span>
@@ -84,15 +80,5 @@ Login
 <script src="vendor/countdowntime/countdowntime.js"></script>
 
 <script src="js/main.js"></script>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-23581568-13');
-	</script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"840a478f9f377859","version":"2023.10.0","token":"cd0b4b3a733644fc843ef0b185f98241"}' crossorigin="anonymous"></script>
 </body>
 </html>

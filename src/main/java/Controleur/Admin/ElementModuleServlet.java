@@ -1,5 +1,5 @@
 package Controleur.Admin;
-
+/*
 import Modele.Compte;
 import Modele.CompteDAO;
 import Modele.MySQLConnection;
@@ -118,10 +118,10 @@ public class CompteServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/comptes");
             } else {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
-            }*/
+            }*\\/
         } else {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
 }
-
+*/
